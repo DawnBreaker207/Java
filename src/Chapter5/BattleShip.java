@@ -1,7 +1,5 @@
 package Chapter5;
 
-import java.util.Iterator;
-
 class Game {
 
 }
