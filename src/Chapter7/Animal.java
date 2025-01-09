@@ -19,17 +19,9 @@ public class Animal {
 
     }
 
-    class Canine extends Animal {
-	void roam() {
-
-	}
-	void eat() {
-	    super.eat();
-	}
-    }
-
     public static void main(String[] args) {
-	Animal Lion = new Animal();
+
+	Animal Lion = new Canine();
 	Lion.makeNoise();
 	Lion.eat();
 
@@ -52,5 +44,37 @@ public class Animal {
 	Animal Wolf = new Animal();
 	Wolf.makeNoise();
 	Wolf.eat();
+
+	Animal[] animals = new Animal[5];
+	animals[0] = new Dog();
+	animals[1] = new Cat();
+	animals[2] = new Wolf();
+
+	for (Animal animal : animals) {
+	    animal.eat();
+	    animal.sleep();
+
+	}
     }
+}
+
+class Canine extends Animal {
+    void roam() {
+
+    }
+
+    void eat() {
+	super.eat();
+    }
+}
+
+class Dog extends Animal {
+
+}
+
+class Cat extends Animal {
+
+}
+
+class Wolf extends Animal {
 }
