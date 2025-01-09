@@ -35,6 +35,7 @@ public class Animal {
 
 	Animal Dog = new Animal();
 	Dog.makeNoise();
+	Dog.makeNoise();
 	Dog.eat();
 
 	Animal Cat = new Animal();
@@ -44,6 +45,10 @@ public class Animal {
 	Animal Wolf = new Animal();
 	Wolf.makeNoise();
 	Wolf.eat();
+
+	Vet vet = new Vet();
+	vet.giveShot(Lion);
+	vet.giveShot(Cat);
 
 	Animal[] animals = new Animal[5];
 	animals[0] = new Dog();
@@ -58,18 +63,32 @@ public class Animal {
     }
 }
 
-class Canine extends Animal {
-    void roam() {
-
-    }
-
-    void eat() {
-	super.eat();
+class Vet {
+    public void giveShot(Animal a) {
+	a.makeNoise();
     }
 }
 
-class Dog extends Animal {
+class Canine extends Animal {
+    void roam() {
+    }
 
+    void eat() {
+	// Overide
+	super.eat();
+    }
+
+}
+
+class Dog extends Animal {
+    // Overloaded
+    void makeNoise() {
+
+    }
+
+    int makeNoise(int a, int b) {
+	return a + b;
+    }
 }
 
 class Cat extends Animal {
