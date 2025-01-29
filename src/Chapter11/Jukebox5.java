@@ -13,7 +13,6 @@ class Jukebox5 {
 	List<SongV3> songList = MockSongs.getSongV3();
 	System.out.println(songList);
 
-	
 	TitleCompare titleCompare = new TitleCompare();
 	songList.sort(titleCompare);
 	System.out.println(songList);
@@ -21,14 +20,32 @@ class Jukebox5 {
 	ArtistCompare artistCompare = new ArtistCompare();
 	songList.sort(artistCompare);
 	System.out.println(songList);
+
+//	Inner classes
+	songList.sort(new Comparator<SongV3>() {
+	    public int compare(SongV3 one, SongV3 two) {
+		return one.getTitle().compareTo(two.getTitle());
+	    }
+	});
+
+//	Lambda expression
+	songList.sort((one, two) -> one.getTitle().compareTo(two.getTitle()));
     }
 
 }
 
-class TitleCompare implements Comparator<SongV3>{
+class TitleCompare implements Comparator<SongV3> {
 
     public int compare(SongV3 one, SongV3 two) {
 	return one.getTitle().compareTo(two.getTitle());
     }
-    
+
+}
+
+class ArtistCompare implements Comparator<SongV3> {
+
+    public int compare(SongV3 one, SongV3 two) {
+	return one.getArtist().compareTo(two.getArtist());
+    }
+
 }
