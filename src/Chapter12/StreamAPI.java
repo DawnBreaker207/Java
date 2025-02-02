@@ -11,8 +11,11 @@ public class StreamAPI {
 	Stream<String> stream = strings.stream();
 //	Using stream operation to set limit of return collection into 4
 	Stream<String> limit = stream.limit(4);
+// Call the count terminal operator, and store the output in a variable called result 
+// 	long result = limit.count();
 
-	System.out.println(limit);
+	List<String> result = limit.collect(Collectors.toList());
+	System.out.println("Result = " + result);
     }
 
 }
