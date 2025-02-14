@@ -75,12 +75,23 @@ public class JukeboxStreams {
 
     public static void main(String[] args) {
 	List<Song> songs = new Songs().getSongs();
-
+	String songTitle = "With a Little Help from My Friends";
 //	List<Song>
 	List<String> rockSongs = songs.stream()
 //		.filter(song -> song.getGenre().contains("Rock"))
-		.map(song -> song.getGenre()).distinct().collect(Collectors.toList());
+		.filter(song -> song.getTitle().equals(songTitle))
+//		.map(song -> song.getGenre())
+		.map(song -> song.getArtist())
+		.filter(artist -> !artist.equals("The Beatles"))
+//		.distinct()
+		.collect(Collectors.toList());
 	System.out.println(rockSongs);
+   
+	boolean resultGenre = songs.stream().anyMatch(s->s.getGenre().equals("R&B"));
+	Optional<Song> resultYear = songs.stream().filter(s->s.getYear() == 1995).findFirst();
+	long resultCount = songs.stream().map(Song::getArtist).distinct().count();
     }
+    
+    
 
 }
